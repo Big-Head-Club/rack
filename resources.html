@@ -1,0 +1,102 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#dcd8d0; --bg-lit:#eceae3; --ink:#1d1f19; --dim:#6e7267; --rule:rgba(29,31,25,.16);
+    --accent:#b8420c;
+    --serif:'Didot','Bodoni 72','Hoefler Text',Garamond,'Times New Roman',serif;
+    --grot:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#121410; --bg-lit:#1d2118; --ink:#dfe4d2; --dim:#7d8472; --rule:rgba(223,228,210,.16);
+      --accent:#f2812f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#121410; --bg-lit:#1d2118; --ink:#dfe4d2; --dim:#7d8472; --rule:rgba(223,228,210,.16);
+    --accent:#f2812f;
+  }
+  html{ -webkit-text-size-adjust:100% }
+  body{
+    margin:0; min-height:100vh;
+    background-color:var(--bg);
+    background-image:radial-gradient(130% 62% at 50% -8%, var(--bg-lit), var(--bg) 82%);
+    background-repeat:no-repeat;
+    color:var(--ink); font-family:var(--grot);
+  }
+  *,*::before,*::after{ box-sizing:border-box }
+  .page{
+    max-width:640px; margin:0 auto;
+    padding:clamp(48px,9vh,110px) clamp(16px,4vw,40px) clamp(80px,12vh,140px);
+  }
+  .site{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin:0 0 clamp(30px,5vh,52px);
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.24em;
+  }
+  .site a{ color:var(--dim); text-decoration:none; padding:4px 2px 5px; border-bottom:1px solid transparent }
+  .site a:hover{ color:var(--ink) }
+  .site a[aria-current]{ color:var(--ink); border-bottom-color:var(--accent) }
+  .site .vdiv{ width:1px; height:11px; background:currentColor; opacity:.25 }
+  h1{
+    margin:0 0 clamp(28px,5vh,44px); text-align:center;
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(2.4rem,7vw,4.2rem); line-height:1; letter-spacing:-.015em;
+  }
+  h2{
+    margin:clamp(36px,6vh,56px) 0 12px;
+    font-family:var(--mono); font-weight:400; font-size:.72rem; letter-spacing:.28em;
+    color:var(--dim);
+  }
+  p{ margin:0 0 1em; font-size:1.05rem; line-height:1.55 }
+  p:last-child{ margin-bottom:0 }
+  a{ color:var(--accent) }
+  ul{ list-style:none; margin:0; padding:0 }
+  li{ padding:14px 0; border-top:1px solid var(--rule); font-size:1.05rem; line-height:1.5 }
+  li:last-child{ border-bottom:1px solid var(--rule) }
+  li a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--accent) }
+  li a:hover{ color:var(--accent) }
+  li span{ display:block; color:var(--dim); font-size:.95rem; margin-top:2px }
+  .mono{ font-family:var(--mono); font-variant-numeric:tabular-nums }
+</style>
+<title>Resources · Hundred Carts</title>
+<div class="page">
+  <nav class="site" aria-label="Site">
+    <a href="/">CARTS</a>
+    <span class="vdiv" aria-hidden="true"></span>
+    <a href="/resources" aria-current="page">RESOURCES</a>
+  </nav>
+  <h1>Resources</h1>
+
+  <p>What the hundred games are built with, and where to look if you want to see how.</p>
+
+  <h2>THE PROJECT</h2>
+  <ul>
+    <li><a href="https://build-ledger-production.up.railway.app/">Build Ledger</a><span>Every project, measured from its own git history. Days, commits, lines, what is live.</span></li>
+    <li><a href="https://relay-production-0b77.up.railway.app/">Relay</a><span>The house template for daily link-first games. Two files of game, everything else built in.</span></li>
+    <li><a href="https://silly-ninjas-production.up.railway.app/">Silly Ninjas art</a><span>Every sheet in the Silly Ninjas kit: the five ninjas with their poses and emotes, and ten worlds of props, ground and cast. Shared by Silly Ninja Defense and Silly Ninja Squares.</span></li>
+    <li><a href="https://hundred-carts-production.up.railway.app/bar.js">The tray</a><span>One script tag gives any game EJECT and SUBSCRIBE. It renders in a shadow root so it looks the same in every codebase and touches none of them.</span></li>
+  </ul>
+
+  <h2>BUILT WITH</h2>
+  <ul>
+    <li><a href="https://claude.com/claude-code">Claude Code</a><span>Every game on the shelf was built with it.</span></li>
+    <li><a href="https://railway.com/">Railway</a><span>Where the games are hosted.</span></li>
+    <li><a href="https://neon.com/">Neon</a><span>Postgres for the games that keep state.</span></li>
+    <li><a href="https://www.midjourney.com/">Midjourney</a><span>The cartridge photographs, and most of the game art.</span></li>
+    <li><a href="https://threejs.org/">three.js</a><span>The 3D games: crowds, apartment towers, zombies.</span></li>
+    <li><a href="https://ithappystudios.com/store/">ITHappy 3D models</a><span>Low-poly City Characters and the Interiors bundle. The crowds in Spotted 3D and Detective Zombie, the rooms in Next Door.</span></li>
+    <li><a href="https://dobo-ui.itch.io/cozy-ui">Cozy UI Pack by dobo_ui</a><span>Pastel cartoon UI from itch.io. Dialogue boxes, cards and panels in Silly Ninja Defense, applied as 9-slice borders.</span></li>
+    <li><a href="https://porkbun.com/">Porkbun</a><span>Domains.</span></li>
+  </ul>
+
+  <h2>THE CARTRIDGES</h2>
+  <ul>
+    <li>Ten Midjourney photographs of cartridges, cut out with real alpha.<span>A cartridge outline is not something a rounded corner can fake, so the silhouette is computed: colour distance against a per-scanline ground model, forced convex, with a separate shadow test used only to trim inward.</span></li>
+    <li>Each label is the game running.<span>The ledger photographs every live game. That plate is printed into the photo window of the shell the game was dealt.</span></li>
+    <li>The sound is synthesised.<span>Web Audio, scheduled on the audio clock so the seat lands with the cart and the chord with the light.</span></li>
+  </ul>
+</div>
+<script defer src="/t.js"></script>

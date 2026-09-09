@@ -1,0 +1,13 @@
+{
+  "_comment": "The printed photo window inside each shell's label sticker, in the cut's own pixels (x0,y0,x1,y1). Set by hand from art/proof.png — the dark shells defeat every automatic guess.",
+  "arch":       [40, 60, 200, 268],
+  "crown":      [84, 45, 239, 222],
+  "fish":       [57, 66, 210, 264],
+  "galaxy":     [42, 46, 220, 314],
+  "hare":       [42, 43, 206, 218],
+  "lighthouse": [44, 46, 215, 254],
+  "moth":       [52, 51, 216, 259],
+  "scarab":     [57, 49, 190, 229],
+  "tower":      [76, 40, 217, 218],
+  "whale":      [68, 40, 214, 258]
+}

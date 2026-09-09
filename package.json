@@ -1,0 +1,8 @@
+{
+  "name": "rack",
+  "private": true,
+  "version": "0.1.0",
+  "description": "The cartridge rack, fed by the arcade.",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=22" }
+}
