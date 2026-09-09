@@ -583,12 +583,12 @@
     /* the flood is the one thing that is genuinely a flash of light — it does not run here */
     .flood.on .flat, .glowfield.on i{ animation:none }
   }
-  /* the game's plate, printed into the shell's photo window: picture up top at the window's
-     full width, a dark block under it, lit from the upper left like the shell. */
-  .label{ position:absolute; overflow:hidden; background:#101010; box-shadow:inset 0 0 0 1px rgba(0,0,0,.35) }
-  .label img{ display:block; width:100%; height:auto }
+  /* the game's label, rendered by the arcade at this shell's window size, printed into the
+     photo window and lit from the upper left like the shell. */
+  .label{ position:absolute; overflow:hidden; box-shadow:0 0 0 1px rgba(0,0,0,.25), inset 0 0 6px rgba(0,0,0,.35) }
+  .label img{ display:block; width:100%; height:100%; object-fit:fill }
   .label::after{ content:""; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,0) 45%, rgba(0,0,0,.18)) }
+    background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,0) 40%, rgba(0,0,0,.14)) }
 </style>
 
 <div class="page">
@@ -715,7 +715,7 @@
       art: (g && g.a) || ART_KEYS[(i * 3 + Math.floor(i / ART_KEYS.length)) % ART_KEYS.length],
       /* the game's own picture printed on the label — tools/plate-cart.js puts the ledger's
          plate into the shell's photo window. A game without one wears the shell's stock label. */
-      photo: g ? ARCADE + "/plates/" + g.s : null,
+      photo: g ? ARCADE + "/labels/" + g.s : null,
       hue: (r() * 4 - 2),
       sat: .94 + r() * .12,
       bri: .95 + r() * .10,
