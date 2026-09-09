@@ -661,10 +661,10 @@
      you arrive in the game. `a` is the shell it was dealt; the list is written in from
      tools/games.json by tools/rebuild.js, so edit it there. */
   const GAMES = __GAMES__;
-  /* the printed photo window of each shell, as % of the cut: left, top, width, height.
-     The arcade's plate for the game is printed there at request time, so a new game wears
-     its own picture the moment it registers. */
-  const LABELS = {"arch": [15.27, 15.0, 61.07, 52.0], "crown": [29.89, 11.25, 55.16, 44.25], "fish": [21.51, 16.5, 57.74, 49.5], "galaxy": [16.28, 11.5, 68.99, 67.0], "hare": [16.87, 10.75, 65.86, 43.75], "lighthouse": [17.12, 11.5, 66.54, 52.0], "moth": [19.33, 12.75, 60.97, 52.0], "scarab": [22.98, 12.25, 53.63, 45.0], "tower": [29.12, 10.0, 54.02, 44.5], "whale": [26.77, 10.0, 57.48, 54.5]};
+  /* the sticker on each shell as % of the cut: left, top, width, height. The arcade measured
+     them and renders every label at that size; the server writes them in here from
+     /api/shells.json so both ends print to the same rectangle. */
+  const LABELS = __LABELS__;
   const ARCADE = "__ARCADE__";
   const DAY = GAMES.length;
   const refilled  = new Set();

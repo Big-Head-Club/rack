@@ -13,6 +13,19 @@ const resources = read('resources.html');
 const bar = read('bar.js');
 const snapshot = JSON.parse(read('tools/games-snapshot.json'));
 const HTML = { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=60' };
+// The sticker rectangle per shell, from the arcade; the committed copy is the fallback.
+const bundledBoxes = JSON.parse(read('tools/shells-snapshot.json'));
+let boxes = { at: 0, map: bundledBoxes };
+async function labelBoxes() {
+  if (Date.now() - boxes.at < 3_600_000) return boxes.map;
+  try {
+    const r = await fetch(`${ARCADE}/api/shells.json`, { signal: AbortSignal.timeout(8000) });
+    if (!r.ok) throw new Error(`arcade ${r.status}`);
+    const j = await r.json();
+    boxes = { at: Date.now(), map: Object.fromEntries(Object.entries(j).map(([k, v]) => [k, v.box])) };
+  } catch (e) { console.error('rack: using the last shell boxes:', e.message); boxes.at = Date.now() - 3_300_000; }
+  return boxes.map;
+}
 
 // The list the page bakes in: slug, name, url, shell. Refreshed from the arcade every minute;
 // the committed snapshot is the fallback if the arcade is unreachable at boot.
@@ -41,7 +54,7 @@ http.createServer(async (req, res) => {
     return res.end(bar);
   }
   if (url === '/resources' || url === '/resources.html') { res.writeHead(200, HTML); return res.end(resources); }
-  const list = await gamesList();
+  const [list, lb] = await Promise.all([gamesList(), labelBoxes()]);
   res.writeHead(200, HTML);
-  res.end(page.replace('__GAMES__', JSON.stringify(list)));
+  res.end(page.replace('__GAMES__', JSON.stringify(list)).replace('__LABELS__', JSON.stringify(lb)));
 }).listen(port, () => console.log('rack on ' + port + ', games from ' + ARCADE));
